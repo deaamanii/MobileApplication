@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MobileApplication</string>
+    <string name="coffee_splash_image">Coffee Splash Image</string>
+    <string name="choice_your_nfavorite_coffee">Choice your \nFavorite Coffee</string>
+    <string name="the_best_grain_the_finest_roast_nthe_powerfull_flavour">The best grain, the finest roast\nthe powerfull flavour</string>
+    <string name="get_started">Get Started</string>
+    <string name="search_anything">Search anything...</string>
+    <string name="category">Category</string>
+    <string name="popular_coffees">Popular Coffees</string>
+    <string name="see_all">See all</string>
+</resources>
