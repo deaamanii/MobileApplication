@@ -49,15 +49,16 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        style="@android:style/Widget.Button"
-        android:textStyle="bold"
         android:id="@+id/startBtn"
+        style="@android:style/Widget.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/orange_bg"
         android:text="@string/get_started"
         android:textSize="18sp"
-        android:background="@drawable/orange_bg"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
