@@ -1,11 +1,13 @@
 package com.example.mobileapplication.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mobileapplication.Domain.ItemsModel
+import com.example.mobileapplication.activity.DetailActivity
 import com.example.mobileapplication.databinding.ViewholderPopularBinding
 
 class PopularAdapter(val items:MutableList<ItemsModel>):RecyclerView.Adapter<PopularAdapter.Viewholder>() {
@@ -28,6 +30,11 @@ class PopularAdapter(val items:MutableList<ItemsModel>):RecyclerView.Adapter<Pop
             .load(items[position].picUrl[0])
             .into(holder.binding.pic)
 
+        holder.itemView.setOnClickListener {
+            val intent=Intent(context,DetailActivity::class.java)
+            intent.putExtra("Object",items[position])
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int =items.size
