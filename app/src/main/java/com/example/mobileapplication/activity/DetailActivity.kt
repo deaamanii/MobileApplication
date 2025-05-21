@@ -69,7 +69,7 @@ class DetailActivity : AppCompatActivity() {
             managmentCart.insertItems(item)
         }
             backBtn.setOnClickListener{
-                startActivity(Intent(this@DetailActivity,MainActivity::class.java))
+                finish()
             }
             plusCart.setOnClickListener{
                 numberItemTxt.text=(item.numberInCart+1).toString()

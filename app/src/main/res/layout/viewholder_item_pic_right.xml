@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
         android:background="@drawable/white_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +20,6 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/picMain"
-        android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/CircleImageView"
         android:layout_width="145dp"
         android:layout_height="95dp"
