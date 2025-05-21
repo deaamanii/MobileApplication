@@ -9,6 +9,7 @@ import com.google.firebase.database.ValueEventListener
 import com.example.mobileapplication.Domain.BannerModel
 import com.example.mobileapplication.Domain.CategoryModel
 import com.example.mobileapplication.Domain.ItemsModel
+import com.google.firebase.database.Query
 
 class MainRepository {
     private val firebaseDatabase=FirebaseDatabase.getInstance()
@@ -72,5 +73,25 @@ class MainRepository {
         })
         return listData
     }
+    fun loadItemCategory(categoryId:String):LiveData<MutableList<ItemsModel>>{
+        val itemsLiveData=MutableLiveData<MutableList<ItemsModel>>()
+        val ref = firebaseDatabase.getReference("Items")
+       val query:Query =ref.orderByChild("categoryId").equalTo(categoryId)
 
+    query.addListenerForSingleValueEvent(object:ValueEventListener{
+        override fun onDataChange(snapshot: DataSnapshot) {
+            val list= mutableListOf<ItemsModel>()
+            for(childSnapshot in snapshot.children){
+                val item=childSnapshot.getValue(ItemsModel::class.java)
+                item?.let { list.add(it) }
+            }
+            itemsLiveData.value=list
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    })
+        return itemsLiveData
+    }
 }

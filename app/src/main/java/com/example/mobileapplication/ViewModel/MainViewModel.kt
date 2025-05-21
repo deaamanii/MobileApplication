@@ -7,7 +7,7 @@ import com.example.mobileapplication.Domain.CategoryModel
 import com.example.mobileapplication.Domain.ItemsModel
 import com.example.mobileapplication.Repository.MainRepository
 
-class MainViewModel : ViewModel() {
+class  MainViewModel : ViewModel() {
     private val repository = MainRepository()
 
     fun loadBanner(): LiveData<MutableList<BannerModel>> {
@@ -22,4 +22,7 @@ class MainViewModel : ViewModel() {
         return repository.loadPopular()
     }
 
+    fun loadItems(categoryId:String):LiveData<MutableList<ItemsModel>>{
+        return repository.loadItemCategory(categoryId)
+    }
 }
