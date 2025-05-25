@@ -12,6 +12,7 @@ import com.example.mobileapplication.Adapter.CategoryAdapter
 import com.example.mobileapplication.Adapter.PopularAdapter
 import com.example.mobileapplication.ViewModel.MainViewModel
 import com.example.mobileapplication.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -20,19 +21,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        this.enableEdgeToEdge()
+        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initBanner()
         initcategory()
         initPopular()
-        setupProfileButton() // <-- Added for Profile click
+        setupProfileButton()
+        setupLogoutButton()
     }
 
     private fun setupProfileButton() {
         binding.profileButton.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
+        }
+    }
+
+    private fun setupLogoutButton() {
+        binding.logouttButton.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 

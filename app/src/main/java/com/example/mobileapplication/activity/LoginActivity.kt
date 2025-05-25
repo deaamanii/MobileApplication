@@ -48,15 +48,20 @@ class LoginActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
-                                    // Redirect based on role
-                                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                    // You can pass role info if needed
-                                    startActivity(intent)
+                                    if (role == "admin") {
+                                        startActivity(Intent(this@LoginActivity, AdminActivity::class.java))
+                                    } else {
+                                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                                    }
                                     finish()
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {
-                                    Toast.makeText(this@LoginActivity, "Failed to load user role", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this@LoginActivity,
+                                        "Failed to load user role",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                             })
                     } else {
