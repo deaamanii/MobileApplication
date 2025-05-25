@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -16,9 +16,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildFeatures {
-        viewBinding = true
     }
 
     buildTypes {
@@ -42,17 +39,24 @@ android {
 }
 
 dependencies {
+    // AndroidX and UI
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.firebase.database)
+
+    // Firebase
+    implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.google.firebase:firebase-database:20.3.0")
+
+    // Utility libraries
+    implementation(libs.glide)
+    implementation(libs.gson)
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    implementation(libs.glide)
-    implementation(libs.gson)
 }
 
 kotlin {

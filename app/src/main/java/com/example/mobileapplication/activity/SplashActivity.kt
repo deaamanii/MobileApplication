@@ -18,11 +18,11 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 👇 This is where the click and toast logic goes
+        // 👇 Redirect to LoginActivity instead of MainActivity
         binding.startBtn.setOnClickListener {
             Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }

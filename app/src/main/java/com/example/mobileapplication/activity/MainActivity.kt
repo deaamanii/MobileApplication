@@ -1,5 +1,6 @@
 package com.example.mobileapplication.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -13,20 +14,26 @@ import com.example.mobileapplication.ViewModel.MainViewModel
 import com.example.mobileapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding:ActivityMainBinding
-    private val viewModel=MainViewModel()
+    lateinit var binding: ActivityMainBinding
+    private val viewModel = MainViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         this.enableEdgeToEdge()
-        binding=ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initBanner()
         initcategory()
         initPopular()
+        setupProfileButton() // <-- Added for Profile click
+    }
 
+    private fun setupProfileButton() {
+        binding.profileButton.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 
     private fun initBanner() {
@@ -40,26 +47,26 @@ class MainActivity : AppCompatActivity() {
         viewModel.loadBanner()
     }
 
-    private fun initcategory(){
-        binding.progressBarCategory.visibility=View.VISIBLE
+    private fun initcategory() {
+        binding.progressBarCategory.visibility = View.VISIBLE
         viewModel.loadCategory().observeForever {
-            binding.recyclerViewCat.layoutManager = 
+            binding.recyclerViewCat.layoutManager =
                 LinearLayoutManager(
                     this@MainActivity, LinearLayoutManager.HORIZONTAL,
                     false
                 )
 
-            binding.recyclerViewCat.adapter=CategoryAdapter(it)
-            binding.progressBarCategory.visibility=View.GONE
+            binding.recyclerViewCat.adapter = CategoryAdapter(it)
+            binding.progressBarCategory.visibility = View.GONE
         }
         viewModel.loadCategory()
     }
 
-    private fun initPopular(){
-        binding.progressBarPopular.visibility=View.VISIBLE
+    private fun initPopular() {
+        binding.progressBarPopular.visibility = View.VISIBLE
         viewModel.loadPopular().observeForever {
-            binding.recyclerViewPopular.layoutManager=GridLayoutManager(this, 2)
-            binding.recyclerViewPopular.adapter=PopularAdapter(it)
+            binding.recyclerViewPopular.layoutManager = GridLayoutManager(this, 2)
+            binding.recyclerViewPopular.adapter = PopularAdapter(it)
             binding.progressBarPopular.visibility = View.GONE
         }
         viewModel.loadPopular()
