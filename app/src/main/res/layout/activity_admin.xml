@@ -51,8 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="➕ Add New Coffee"
-            android:backgroundTint="#6D4C41"
-            android:textColor="@android:color/white"/>
+            android:backgroundTint="#5D4037"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/logoutButton"

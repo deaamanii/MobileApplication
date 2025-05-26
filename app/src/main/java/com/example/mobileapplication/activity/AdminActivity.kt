@@ -9,12 +9,13 @@ import com.example.mobileapplication.R
 import com.google.firebase.auth.FirebaseAuth
 
 class AdminActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
 
+        // Logout button
         val logoutButton = findViewById<Button>(R.id.logoutButton)
-
         logoutButton.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
@@ -22,21 +23,23 @@ class AdminActivity : AppCompatActivity() {
             finish()
         }
 
-        // Optional: Setup future button actions
+        // Manage Menu button (currently placeholder)
         val manageMenuBtn = findViewById<Button>(R.id.manageMenuBtn)
-        val viewOrdersBtn = findViewById<Button>(R.id.viewOrdersBtn)
-        val addCoffeeBtn = findViewById<Button>(R.id.addCoffeeBtn)
-
         manageMenuBtn.setOnClickListener {
             Toast.makeText(this, "Manage Menu (coming soon)", Toast.LENGTH_SHORT).show()
         }
 
+        // View Orders button (currently placeholder)
+        val viewOrdersBtn = findViewById<Button>(R.id.viewOrdersBtn)
         viewOrdersBtn.setOnClickListener {
             Toast.makeText(this, "View Orders (coming soon)", Toast.LENGTH_SHORT).show()
         }
 
+        // Add New Coffee button - launches MainActivity
+        val addCoffeeBtn = findViewById<Button>(R.id.addCoffeeBtn)
         addCoffeeBtn.setOnClickListener {
-            Toast.makeText(this, "Add Coffee (coming soon)", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
