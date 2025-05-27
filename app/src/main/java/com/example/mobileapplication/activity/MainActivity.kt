@@ -3,6 +3,7 @@ package com.example.mobileapplication.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,18 +16,28 @@ import com.example.mobileapplication.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+
+    private lateinit var binding: ActivityMainBinding
     private val viewModel = MainViewModel()
+    private var userType: String? = null  // <-- Check if admin or user
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Retrieve user type from intent (e.g., "admin" or "user")
+        userType = intent.getStringExtra("userType")
+
+        // Optional: Hide certain UI for admins
+        if (userType == "admin") {
+            Toast.makeText(this, "Admin Mode Active", Toast.LENGTH_SHORT).show()
+            // Example: binding.bottomNavigationView.visibility = View.GONE
+        }
+
         initBanner()
-        initcategory()
+        initCategory()
         initPopular()
         setupProfileButton()
         setupLogoutButton()
@@ -34,7 +45,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupProfileButton() {
         binding.profileButton.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            if (userType == "admin") {
+                // Navigate to AdminActivity
+                startActivity(Intent(this, AdminActivity::class.java))
+            } else {
+                // Navigate to user profile
+                startActivity(Intent(this, ProfileActivity::class.java))
+            }
         }
     }
 
@@ -54,22 +71,17 @@ class MainActivity : AppCompatActivity() {
                 .into(binding.banner)
             binding.progressBarBanner.visibility = View.GONE
         }
-        viewModel.loadBanner()
     }
 
-    private fun initcategory() {
+    private fun initCategory() {
         binding.progressBarCategory.visibility = View.VISIBLE
         viewModel.loadCategory().observeForever {
-            binding.recyclerViewCat.layoutManager =
-                LinearLayoutManager(
-                    this@MainActivity, LinearLayoutManager.HORIZONTAL,
-                    false
-                )
-
+            binding.recyclerViewCat.layoutManager = LinearLayoutManager(
+                this@MainActivity, LinearLayoutManager.HORIZONTAL, false
+            )
             binding.recyclerViewCat.adapter = CategoryAdapter(it)
             binding.progressBarCategory.visibility = View.GONE
         }
-        viewModel.loadCategory()
     }
 
     private fun initPopular() {
@@ -79,6 +91,5 @@ class MainActivity : AppCompatActivity() {
             binding.recyclerViewPopular.adapter = PopularAdapter(it)
             binding.progressBarPopular.visibility = View.GONE
         }
-        viewModel.loadPopular()
     }
 }

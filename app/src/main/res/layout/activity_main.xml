@@ -262,56 +262,6 @@
                 android:layout_marginTop="2dp" />
         </LinearLayout>
 
-        <!-- Favorites -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:contentDescription="Favorites Icon"
-                app:srcCompat="@drawable/btn_3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Favourites"
-                android:textSize="10sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="2dp" />
-        </LinearLayout>
-
-        <!-- Orders -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:contentDescription="Orders Icon"
-                app:srcCompat="@drawable/btn_4" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Order"
-                android:textSize="10sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="2dp" />
-        </LinearLayout>
-
         <!-- Profile -->
         <LinearLayout
             android:id="@+id/profileTab"
