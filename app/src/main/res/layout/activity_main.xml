@@ -239,13 +239,14 @@
 
         <!-- Cart -->
         <LinearLayout
+            android:id="@+id/cartBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="22dp"
@@ -256,10 +257,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Cart"
-                android:textSize="10sp"
                 android:textColor="@color/white"
-                android:layout_marginTop="2dp" />
+                android:textSize="10sp" />
         </LinearLayout>
 
         <!-- Profile -->

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.mobileapplication.Adapter.CategoryAdapter
 import com.example.mobileapplication.Adapter.PopularAdapter
+import com.example.mobileapplication.CartActivity
 import com.example.mobileapplication.ViewModel.MainViewModel
 import com.example.mobileapplication.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -39,8 +40,15 @@ class MainActivity : AppCompatActivity() {
         initBanner()
         initCategory()
         initPopular()
+        initBottomMenu()
         setupProfileButton()
         setupLogoutButton()
+    }
+
+    private fun initBottomMenu(){
+        binding.cartBtn.setOnClickListener{
+            startActivity(Intent(this, CartActivity::class.java))
+        }
     }
 
     private fun setupProfileButton() {
