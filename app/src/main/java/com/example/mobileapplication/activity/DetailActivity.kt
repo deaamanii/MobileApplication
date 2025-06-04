@@ -15,14 +15,14 @@ import com.example.mobileapplication.databinding.ActivityDetailBinding
 class DetailActivity : AppCompatActivity() {
     lateinit var binding:ActivityDetailBinding
     private lateinit var item:ItemsModel
-    private lateinit var managmentCart:ManagementCart
+    private lateinit var managementCart:ManagementCart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding=ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        managmentCart=ManagementCart(this)
+        managementCart=ManagementCart(this)
 
         bundle()
         initSizeList()
@@ -66,7 +66,7 @@ class DetailActivity : AppCompatActivity() {
             item.numberInCart=Integer.valueOf(
               numberItemTxt.text.toString()
             )
-            managmentCart.insertItems(item)
+            managementCart.insertItems(item)
         }
             backBtn.setOnClickListener{
                 finish()
