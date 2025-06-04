@@ -63,7 +63,7 @@ class ViewOrdersActivity : AppCompatActivity() {
         var status: String? = "Pending",
         var total: Double = 0.0
     )
-
+//test
     inner class OrdersAdapter(private val orders: List<Order>) : RecyclerView.Adapter<OrdersAdapter.OrderViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
