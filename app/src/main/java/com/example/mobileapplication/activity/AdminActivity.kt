@@ -42,7 +42,7 @@ class AdminActivity : AppCompatActivity() {
 
         // View Orders button - placeholder
         findViewById<Button>(R.id.viewOrdersBtn).setOnClickListener {
-            Toast.makeText(this, "View Orders (coming soon)", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ViewOrdersActivity::class.java))
         }
 
         // Add New Coffee button - opens MainActivity

@@ -52,4 +52,8 @@ class ManagementCart(private val context: Context) {
     fun getTotalFee(): Double {
         return getListCart().sumOf { it.price * it.numberInCart }
     }
+
+    fun clearCart() {
+        tinyDB.putListObject("CartList", arrayListOf())
+    }
 }

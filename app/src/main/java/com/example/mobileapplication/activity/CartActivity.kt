@@ -1,13 +1,16 @@
 package com.example.mobileapplication
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobileapplication.Adapter.CartAdapter
-import com.example.mobileapplication.Helper.ChangeNumberItemsListener
+import com.example.mobileapplication.Domain.ItemsModel
 import com.example.mobileapplication.Helper.ManagementCart
+import com.example.mobileapplication.Helper.ChangeNumberItemsListener
 import com.example.mobileapplication.databinding.ActivityCartBinding
+import com.google.firebase.database.FirebaseDatabase
 
 class CartActivity : AppCompatActivity() {
 
@@ -63,6 +66,31 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun setVariable() {
-        // Add button click listeners if needed
+        binding.button5.setOnClickListener {
+            val cartItems = managementCart.getListCart()
+            val databaseRef = FirebaseDatabase.getInstance().reference
+
+            val orderMap = hashMapOf<String, Any>(
+                "items" to cartItems,
+                "subtotal" to managementCart.getTotalFee(),
+                "tax" to tax,
+                "delivery" to 15,
+                "total" to (managementCart.getTotalFee() + tax + 15),
+                "status" to "Pending"
+            )
+
+            // Write order to Firebase
+            val newOrderRef = databaseRef.child("orders").push()
+            newOrderRef.setValue(orderMap).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Coffee is on the way...", Toast.LENGTH_LONG).show()
+                    // Optional: clear cart
+                    managementCart.clearCart()
+                    finish() // Go back or close cart
+                } else {
+                    Toast.makeText(this, "Failed to submit order", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

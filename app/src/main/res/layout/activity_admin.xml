@@ -41,10 +41,10 @@
             android:id="@+id/viewOrdersBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📦 View Orders"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="#8D6E63"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="16dp"/>
+            android:text="📦 View Orders"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/addCoffeeBtn"

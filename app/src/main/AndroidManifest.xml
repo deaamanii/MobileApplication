@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Required for Firebase network access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApplication"
         tools:targetApi="31">
+
         <activity
             android:name=".CartActivity"
             android:exported="false" />
@@ -32,16 +36,21 @@
             android:exported="false" />
         <activity
             android:name=".activity.DetailActivity"
-            android:exported="false" /> <!-- SplashActivity is now the launcher activity -->
+            android:exported="false" />
+
+        <activity android:name=".activity.ViewOrdersActivity" />
+
+        <!-- Launcher (Splash) Activity -->
         <activity
             android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- MainActivity is a regular activity -->
+        </activity>
+
+        <!-- Regular Main Activity -->
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" />

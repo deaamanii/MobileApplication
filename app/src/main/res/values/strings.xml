@@ -27,4 +27,6 @@
     <string name="desc_favorite_icon">Favorite icon</string>
     <string name="desc_back_button">Back button icon</string>
     <string name="desc_star_icon">Rating star icon</string>
+    <string name="apply">Apply</string>
+    <string name="cart">Cart</string>
 </resources>
