@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/coffee_splash_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Coffee Splash Image"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/splash_pic" />
+        app:srcCompat="@drawable/cofe" />
 
     <TextView
         android:id="@+id/textView"
