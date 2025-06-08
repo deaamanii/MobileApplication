@@ -68,7 +68,7 @@ class DetailActivity : AppCompatActivity() {
                 item.numberInCart = numberItemTxt.text.toString().toInt()
                 managementCart.insertItems(item)
             }
-
+//test
             backBtn.setOnClickListener {
                 finish()
             }
